@@ -30,8 +30,11 @@ func main() {
 	commandsList.register("reset", handlerReset)
 	commandsList.register("users", handlerUsers)
 	commandsList.register("agg", handlerAgg)
-	commandsList.register("addfeed", handlerAddFeed)
+	commandsList.register("addfeed", middlewareLoggedIn(handlerAddFeed))
 	commandsList.register("feeds", handlerFeeds)
+	commandsList.register("follow", middlewareLoggedIn(handlerFollow))
+	commandsList.register("following", middlewareLoggedIn(handlerFollowing))
+	commandsList.register("unfollow", middlewareLoggedIn(handlerUnfollow))
 	args := os.Args
 	if len(args) < 2 {
 		fmt.Printf("Not enough arguments\n")

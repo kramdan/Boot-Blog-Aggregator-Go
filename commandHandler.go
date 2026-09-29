@@ -1,10 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"Boot-Blog-Aggregator-Go/internal/database"
+	"fmt"
+)
 
 type command struct {
 	name string
 	args []string
+}
+
+type userCommand struct {
+	name string
+	args []string
+	user database.User
 }
 
 type commands struct {
